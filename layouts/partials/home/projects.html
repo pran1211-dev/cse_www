@@ -1,0 +1,65 @@
+{{/*
+  layouts/partials/home/projects.html
+  ─────────────────────────────────────────────────────────────────────────────
+  Featured projects grid on homepage. Pulls projects with
+  params.featured = true from content/projects/ section.
+  Shows image cards with gradient overlay and hover zoom.
+  ─────────────────────────────────────────────────────────────────────────────
+*/}}
+
+{{- $projects := where (where .Site.RegularPages "Section" "projects") ".Params.featured" true -}}
+{{- if not $projects -}}
+  {{/* Fallback: show all projects if none explicitly featured */}}
+  {{- $projects = where .Site.RegularPages "Section" "projects" -}}
+{{- end -}}
+{{- $projects = first 3 $projects -}}
+
+{{- with $projects -}}
+<section class="projects-section" aria-labelledby="projects-heading">
+  <div class="container">
+
+    <div class="projects-section__header reveal">
+      <div>
+        <span class="section-accent"></span>
+        <h2 class="section-heading" id="projects-heading">Featured Projects</h2>
+        <p class="section-subheading">
+          A selection of our recent structural engineering work across the tri-state area.
+        </p>
+      </div>
+      <a href="/projects/" class="btn btn--outline">All Projects</a>
+    </div>
+
+    <div class="project-grid">
+      {{- range $i, $project := . -}}
+      <article class="project-card reveal reveal--d{{ add $i 1 }}">
+        <a href="{{ $project.RelPermalink }}" class="project-card__link">
+          <div class="project-card__image-wrap"
+               {{- with $project.Params.card_bg }} style="background: {{ . }}"{{ end -}}>
+            {{- with $project.Params.cover -}}
+              <img class="project-card__image"
+                   src="{{ . | relURL }}"
+                   alt="{{ $project.Title }}"
+                   loading="lazy"
+                   decoding="async">
+            {{- else -}}
+              <div class="project-card__placeholder">{{ $project.Title }}</div>
+            {{- end -}}
+            <div class="project-card__overlay" aria-hidden="true"></div>
+            <div class="project-card__info">
+              {{- with $project.Params.project_type -}}
+                <p class="project-card__type">{{ . }}</p>
+              {{- end -}}
+              <h3 class="project-card__title">{{ $project.Title }}</h3>
+              {{- with $project.Params.location -}}
+                <p class="project-card__location">{{ . }}</p>
+              {{- end -}}
+            </div>
+          </div>
+        </a>
+      </article>
+      {{- end -}}
+    </div>
+
+  </div>
+</section>
+{{- end -}}

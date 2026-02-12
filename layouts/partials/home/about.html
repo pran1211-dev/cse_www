@@ -1,0 +1,45 @@
+{{/*
+  layouts/partials/home/about.html
+  ─────────────────────────────────────────────────────────────────────────────
+  WSP-inspired statement section: large bold heading on the left,
+  supporting text + CTA on the right. Generous whitespace.
+
+  Params (hugo.toml [params]):
+    about_heading  — large statement text
+    about_text     — supporting paragraph
+    about_cta_text — CTA link label
+    about_cta_link — CTA link URL
+  ─────────────────────────────────────────────────────────────────────────────
+*/}}
+
+{{- $heading := .Param "about_heading" -}}
+{{- $text    := .Param "about_text" -}}
+{{- $ctaText := .Param "about_cta_text" | default "About Our Firm" -}}
+{{- $ctaLink := .Param "about_cta_link" | default "/about/" -}}
+
+{{- with $heading -}}
+<section class="about-section" aria-labelledby="about-heading">
+  <div class="container">
+    <div class="about-section__inner">
+
+      <div class="reveal reveal--left">
+        <span class="section-accent"></span>
+        <h2 class="about-section__heading" id="about-heading">{{ . }}</h2>
+      </div>
+
+      <div class="reveal reveal--right reveal--d2">
+        {{- with $text -}}
+          <p class="about-section__text">{{ . }}</p>
+        {{- end -}}
+        <a href="{{ $ctaLink }}" class="about-section__cta">
+          {{ $ctaText }}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+{{- end -}}

@@ -17,6 +17,12 @@ summaryLength = 30
   hero_cta_text   = 'Explore Services'
   hero_cta_link   = '/services/'
 
+  # Homepage about statement section
+  about_heading  = 'Engineering the structures that shape our cities'
+  about_text     = 'From high-rise towers to historic restorations, CityScape Engineering delivers structural solutions that are safe, efficient, and built to last. We work across all construction types — residential, commercial, industrial, and mixed-use — throughout New York, New Jersey, and Connecticut.'
+  about_cta_text = 'About Our Firm'
+  about_cta_link = '/about/'
+
 [menu]
   [[menu.main]]
     name   = 'About'

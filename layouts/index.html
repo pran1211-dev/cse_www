@@ -1,27 +1,26 @@
 {{/*
   layouts/index.html
   ─────────────────────────────────────────────────────────────────────────────
-  Homepage template. Assembles section partials in order.
+  Homepage template. Assembles section partials in order with scroll
+  reveal animations. New sections: about statement, featured projects.
 
   Front matter params (set in content/_index.md or hugo.toml [params]):
-    hero_image      — path inside assets/, e.g. "images/hero.jpg"
-    hero_heading    — main hero heading text
-    hero_subheading — hero subtitle / tagline
-    hero_cta_text   — CTA button label
-    hero_cta_link   — CTA button URL
+    hero_image, hero_heading, hero_subheading, hero_cta_text, hero_cta_link
+    about_heading, about_text, about_cta_text, about_cta_link
 
   Data files required:
-    data/services_strip.yaml — 4-item teal accent band
-    data/services_grid.yaml  — 4-column detailed services grid
+    data/services_strip.yaml, data/services_grid.yaml
 
   Data files optional:
-    data/team.yaml — team member cards (section hidden if absent)
+    data/team.yaml
   ─────────────────────────────────────────────────────────────────────────────
 */}}
 {{- define "main" -}}
   {{- partial "home/hero.html"           . -}}
   {{- partial "home/services-strip.html" . -}}
+  {{- partial "home/about.html"          . -}}
   {{- partial "home/services-grid.html"  . -}}
+  {{- partial "home/projects.html"       . -}}
   {{- partial "home/team.html"           . -}}
   {{- partial "home/news.html"           . -}}
 {{- end -}}

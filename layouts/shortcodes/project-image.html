@@ -1,0 +1,13 @@
+{{/* project-image: renders a full-width image block for project pages */}}
+<figure class="project-image project-image--full reveal">
+  {{- with (.Get "src") -}}
+    <img src="{{ . }}" alt="{{ $.Get "alt" | default "" }}" loading="lazy" decoding="async">
+  {{- else -}}
+    <div class="project-image__placeholder">
+      <span>{{ .Get "alt" | default "Project Image" }}</span>
+    </div>
+  {{- end -}}
+  {{- with (.Get "caption") -}}
+    <figcaption>{{ . }}</figcaption>
+  {{- end -}}
+</figure>

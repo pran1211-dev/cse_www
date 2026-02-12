@@ -3,10 +3,7 @@
   ─────────────────────────────────────────────────────────────────────────────
   Teal accent band showing 4 primary service categories with icons.
   Content sourced from data/services_strip.yaml.
-
-  data/services_strip.yaml shape:
-    - label: Support of Excavation
-      icon_path: '<path d="..." />'   ← SVG inner elements as a string
+  Items fade in with staggered delays on scroll.
   ─────────────────────────────────────────────────────────────────────────────
 */}}
 
@@ -14,8 +11,8 @@
 <section class="services-strip" aria-label="Service areas overview">
   <div class="container">
     <ul class="services-strip__grid" role="list">
-      {{- range . -}}
-      <li class="services-strip__item">
+      {{- range $i, $item := . -}}
+      <li class="services-strip__item reveal reveal--fade reveal--d{{ add $i 1 }}">
         <svg class="services-strip__icon"
              viewBox="0 0 24 24"
              fill="none"
@@ -24,9 +21,9 @@
              stroke-linecap="round"
              stroke-linejoin="round"
              aria-hidden="true">
-          {{- .icon_path | safeHTML -}}
+          {{- $item.icon_path | safeHTML -}}
         </svg>
-        <span class="services-strip__label">{{ .label }}</span>
+        <span class="services-strip__label">{{ $item.label }}</span>
       </li>
       {{- end -}}
     </ul>

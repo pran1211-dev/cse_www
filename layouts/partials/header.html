@@ -1,8 +1,9 @@
 {{/*
   layouts/partials/header.html
   ─────────────────────────────────────────────────────────────────────────────
-  Sticky site navigation. Logo left, nav links right.
-  On mobile, links wrap below the logo. No JavaScript required.
+  Fixed site header. Transparent on homepage (over hero), solid on interior.
+  JS toggles .is-scrolled class on scroll.
+  Mobile: hamburger toggle with animated bars (progressive enhancement).
   ─────────────────────────────────────────────────────────────────────────────
 */}}
 <header class="site-header" role="banner">
@@ -13,7 +14,17 @@
         <span class="site-logo__accent">cse</span> cityscape
       </a>
 
-      <nav aria-label="Main navigation">
+      {{/* Mobile hamburger toggle — visible only with JS on small screens */}}
+      <button class="nav-toggle"
+              aria-expanded="false"
+              aria-controls="main-nav"
+              aria-label="Toggle navigation">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+      <nav id="main-nav" aria-label="Main navigation">
         <ul class="site-nav" role="list">
           {{- range .Site.Menus.main -}}
           <li class="site-nav__item">

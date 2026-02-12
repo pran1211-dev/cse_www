@@ -1,17 +1,17 @@
 {{/*
   layouts/_default/list.html
   ─────────────────────────────────────────────────────────────────────────────
-  Default list/section template. Used for /posts/, /services/, /projects/.
-  Shows section heading, optional intro content, then a grid of child pages.
+  Default list/section template. Used for /posts/, /services/, etc.
+  Dark hero header, optional intro content, then a grid of child pages.
   ─────────────────────────────────────────────────────────────────────────────
 */}}
 {{- define "main" -}}
 
 <div class="page-hero">
   <div class="container">
-    <h1 class="page-hero__title">{{ .Title }}</h1>
+    <h1 class="page-hero__title reveal">{{ .Title }}</h1>
     {{- with .Description -}}
-      <p class="page-hero__description">{{ . }}</p>
+      <p class="page-hero__description reveal reveal--d1">{{ . }}</p>
     {{- end -}}
   </div>
 </div>
@@ -20,27 +20,27 @@
   <div class="container">
 
     {{- with .Content -}}
-      <div class="prose" style="margin-bottom: var(--space-12);">
+      <div class="prose reveal" style="margin-bottom: var(--space-12);">
         {{ . }}
       </div>
     {{- end -}}
 
     {{- with .Pages -}}
       <div class="list-grid">
-        {{- range . -}}
-        <article class="news-card">
+        {{- range $i, $page := . -}}
+        <article class="news-card reveal reveal--d{{ add (mod $i 3) 1 }}">
           <p class="news-card__date">
-            <time datetime="{{ .Date.Format "2006-01-02" }}">
-              {{- .Date.Format "January 2, 2006" -}}
+            <time datetime="{{ $page.Date.Format "2006-01-02" }}">
+              {{- $page.Date.Format "January 2, 2006" -}}
             </time>
           </p>
           <h2 class="news-card__title">
-            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            <a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
           </h2>
-          {{- with .Description -}}
+          {{- with $page.Description -}}
             <p class="news-card__excerpt">{{ . }}</p>
           {{- else -}}
-            {{- with .Summary -}}
+            {{- with $page.Summary -}}
               <p class="news-card__excerpt">{{ . }}</p>
             {{- end -}}
           {{- end -}}

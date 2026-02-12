@@ -1,36 +1,34 @@
 {{/*
   layouts/partials/home/team.html
   ─────────────────────────────────────────────────────────────────────────────
-  Team member grid. Sourced from data/team.yaml.
+  Team member grid with scroll reveal. Sourced from data/team.yaml.
   Section is hidden entirely if the data file is absent or empty.
-
-  data/team.yaml shape:
-    - name: Jane Smith, P.E.
-      role: Principal Engineer
-      photo: images/team/jane-smith.jpg   ← path relative to static/
   ─────────────────────────────────────────────────────────────────────────────
 */}}
 
 {{- with .Site.Data.team -}}
 <section class="team-section" aria-labelledby="team-heading">
   <div class="container">
-    <h2 class="section-heading" id="team-heading">meet our team</h2>
+    <div class="text-center reveal">
+      <span class="section-accent section-accent--center"></span>
+      <h2 class="section-heading section-heading--center" id="team-heading">Our Team</h2>
+    </div>
     <div class="team-grid">
-      {{- range . -}}
-      <div class="team-card">
+      {{- range $i, $member := . -}}
+      <div class="team-card reveal reveal--d{{ add (mod $i 4) 1 }}">
 
-        {{- with .photo -}}
+        {{- with $member.photo -}}
           <img class="team-card__photo"
                src="{{ . | relURL }}"
-               alt="{{ $.name }}"
+               alt="{{ $member.name }}"
                loading="lazy"
                decoding="async">
         {{- else -}}
-          <div class="team-card__photo--placeholder" role="img" aria-label="{{ .name }}"></div>
+          <div class="team-card__photo--placeholder" role="img" aria-label="{{ $member.name }}"></div>
         {{- end -}}
 
-        <p class="team-card__name">{{ .name }}</p>
-        <p class="team-card__role">{{ .role }}</p>
+        <p class="team-card__name">{{ $member.name }}</p>
+        <p class="team-card__role">{{ $member.role }}</p>
 
       </div>
       {{- end -}}

@@ -1,8 +1,8 @@
 {{/*
   layouts/partials/home/hero.html
   ─────────────────────────────────────────────────────────────────────────────
-  Full-width hero section with optional background image, dark overlay,
-  heading, subtitle, and CTA button.
+  Full-viewport hero with background image, dark overlay, animated heading,
+  subtitle, CTA button, and scroll indicator.
 
   Params (page front matter or hugo.toml [params]):
     hero_image      — path in assets/, e.g. "images/hero.jpg"
@@ -45,11 +45,21 @@
 
   <div class="container">
     <div class="hero__content">
-      <p class="hero__eyebrow">{{ .Site.Title }}</p>
-      <h1 class="hero__title">{{ $heading }}</h1>
-      <p class="hero__subtitle">{{ $sub }}</p>
-      <a href="{{ $ctaLink }}" class="hero__cta">{{ $ctaText }}</a>
+      <p class="hero__eyebrow reveal reveal--fade">{{ .Site.Title }}</p>
+      <h1 class="hero__title reveal reveal--d1">{{ $heading }}</h1>
+      <p class="hero__subtitle reveal reveal--d2">{{ $sub }}</p>
+      <a href="{{ $ctaLink }}" class="hero__cta reveal reveal--d3">
+        {{ $ctaText }}
+        <svg class="hero__cta-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+        </svg>
+      </a>
     </div>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="hero__scroll-line"></div>
   </div>
 
 </section>

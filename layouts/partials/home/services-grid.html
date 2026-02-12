@@ -1,26 +1,24 @@
 {{/*
   layouts/partials/home/services-grid.html
   ─────────────────────────────────────────────────────────────────────────────
-  Four-column services grid with teal-accented category titles and
-  sub-service item lists. Content from data/services_grid.yaml.
-
-  data/services_grid.yaml shape:
-    - title: CSE Structural
-      id: structural              ← used as anchor (#structural)
-      icon_path: '<path d="..." />'
-      items:
-        - New Construction
-        - Alterations and Additions
+  Four-column services grid with hover effects and staggered scroll reveal.
+  Content from data/services_grid.yaml.
   ─────────────────────────────────────────────────────────────────────────────
 */}}
 
 {{- with .Site.Data.services_grid -}}
 <section class="services-section" aria-labelledby="services-heading">
   <div class="container">
-    <h2 class="section-heading" id="services-heading">services</h2>
+    <div class="text-center reveal">
+      <span class="section-accent section-accent--center"></span>
+      <h2 class="section-heading section-heading--center" id="services-heading">Our Services</h2>
+      <p class="section-subheading section-subheading--center">
+        Full-spectrum structural engineering for every phase of construction.
+      </p>
+    </div>
     <div class="services-grid">
-      {{- range . -}}
-      <div class="service-card" {{- with .id }} id="{{ . }}"{{- end -}}>
+      {{- range $i, $card := . -}}
+      <div class="service-card reveal reveal--d{{ add $i 1 }}" {{- with $card.id }} id="{{ . }}"{{- end -}}>
 
         <svg class="service-card__icon"
              viewBox="0 0 24 24"
@@ -30,13 +28,13 @@
              stroke-linecap="round"
              stroke-linejoin="round"
              aria-hidden="true">
-          {{- .icon_path | safeHTML -}}
+          {{- $card.icon_path | safeHTML -}}
         </svg>
 
-        <h3 class="service-card__title">{{ .title }}</h3>
+        <h3 class="service-card__title">{{ $card.title }}</h3>
 
         <ul class="service-card__list" role="list">
-          {{- range .items -}}
+          {{- range $card.items -}}
           <li>{{ . }}</li>
           {{- end -}}
         </ul>

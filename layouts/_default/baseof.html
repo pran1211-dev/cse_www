@@ -2,7 +2,8 @@
   layouts/_default/baseof.html
   ─────────────────────────────────────────────────────────────────────────────
   Base page shell. All page templates extend this via `define "main"`.
-  Loads custom CSS via Hugo Pipes — does not use PaperMod's base template.
+  Body class: "home" for homepage, "inner" for all other pages.
+  Loads custom CSS via Hugo Pipes and scroll animation JS.
   ─────────────────────────────────────────────────────────────────────────────
 */}}
 <!DOCTYPE html>
@@ -10,11 +11,20 @@
   <head>
     {{- partial "head.html" . -}}
   </head>
-  <body>
+  <body class="{{ if .IsHome }}home{{ else }}inner{{ end }}">
     {{- partial "header.html" . -}}
     <main id="main-content" tabindex="-1">
       {{- block "main" . }}{{- end }}
     </main>
     {{- partial "footer.html" . -}}
+    {{/* Scroll animations & UI enhancements */}}
+    {{- $js := resources.Get "js/scroll.js" -}}
+    {{- if $js -}}
+      {{- if hugo.IsProduction -}}
+        {{- $js = $js | minify | fingerprint -}}
+      {{- end -}}
+      <script src="{{ $js.RelPermalink }}" defer
+        {{- if hugo.IsProduction }} integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"{{ end -}}></script>
+    {{- end -}}
   </body>
 </html>

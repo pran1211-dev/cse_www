@@ -1,0 +1,21 @@
+{{/* project-image-pair: renders two images side by side for project pages */}}
+<div class="project-gallery reveal">
+  <figure class="project-gallery__item">
+    {{- with (.Get "src1") -}}
+      <img src="{{ . }}" alt="{{ $.Get "alt1" | default "" }}" loading="lazy" decoding="async">
+    {{- else -}}
+      <div class="project-image__placeholder">
+        <span>{{ .Get "alt1" | default "Project Image" }}</span>
+      </div>
+    {{- end -}}
+  </figure>
+  <figure class="project-gallery__item">
+    {{- with (.Get "src2") -}}
+      <img src="{{ . }}" alt="{{ $.Get "alt2" | default "" }}" loading="lazy" decoding="async">
+    {{- else -}}
+      <div class="project-image__placeholder">
+        <span>{{ .Get "alt2" | default "Project Image" }}</span>
+      </div>
+    {{- end -}}
+  </figure>
+</div>

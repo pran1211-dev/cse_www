@@ -1,24 +1,24 @@
 {{/*
   layouts/_default/single.html
   ─────────────────────────────────────────────────────────────────────────────
-  Default single-page template for all content pages (about, contact, etc.).
-  Dark header band + white prose content area.
+  Default single-page template for content pages (about, contact, etc.).
+  Dark hero header with animated title + white prose content area.
   ─────────────────────────────────────────────────────────────────────────────
 */}}
 {{- define "main" -}}
 
 <div class="page-hero">
   <div class="container">
-    <h1 class="page-hero__title">{{ .Title }}</h1>
+    <h1 class="page-hero__title reveal">{{ .Title }}</h1>
     {{- with .Description -}}
-      <p class="page-hero__description">{{ . }}</p>
+      <p class="page-hero__description reveal reveal--d1">{{ . }}</p>
     {{- end -}}
   </div>
 </div>
 
 <div class="page-content">
   <div class="container">
-    <div class="prose">
+    <div class="prose reveal">
       {{ .Content }}
     </div>
   </div>

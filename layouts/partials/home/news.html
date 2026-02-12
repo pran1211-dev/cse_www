@@ -1,8 +1,8 @@
 {{/*
   layouts/partials/home/news.html
   ─────────────────────────────────────────────────────────────────────────────
-  Latest news/blog posts section. Shows the 3 most recent posts from
-  the "posts" section. Section is hidden if no posts exist.
+  Latest news/blog posts section with scroll reveal.
+  Shows the 3 most recent posts. Hidden if no posts exist.
   ─────────────────────────────────────────────────────────────────────────────
 */}}
 
@@ -12,29 +12,32 @@
 {{- with $recent -}}
 <section class="news-section" aria-labelledby="news-heading">
   <div class="container">
-    <h2 class="section-heading" id="news-heading">news</h2>
+    <div class="text-center reveal">
+      <span class="section-accent section-accent--center"></span>
+      <h2 class="section-heading section-heading--center" id="news-heading">Latest News</h2>
+    </div>
     <div class="news-grid">
-      {{- range . -}}
-      <article class="news-card">
+      {{- range $i, $post := . -}}
+      <article class="news-card reveal reveal--d{{ add $i 1 }}">
         <p class="news-card__date">
-          <time datetime="{{ .Date.Format "2006-01-02" }}">
-            {{- .Date.Format "January 2, 2006" -}}
+          <time datetime="{{ $post.Date.Format "2006-01-02" }}">
+            {{- $post.Date.Format "January 2, 2006" -}}
           </time>
         </p>
         <h3 class="news-card__title">
-          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a>
         </h3>
-        {{- with .Description -}}
+        {{- with $post.Description -}}
           <p class="news-card__excerpt">{{ . }}</p>
         {{- else -}}
-          {{- with .Summary -}}
+          {{- with $post.Summary -}}
             <p class="news-card__excerpt">{{ . }}</p>
           {{- end -}}
         {{- end -}}
       </article>
       {{- end -}}
     </div>
-    <div class="news-cta">
+    <div class="news-cta reveal">
       <a href="/posts/" class="btn btn--outline">All Updates</a>
     </div>
   </div>

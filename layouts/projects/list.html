@@ -1,0 +1,64 @@
+{{/*
+  layouts/projects/list.html
+  ─────────────────────────────────────────────────────────────────────────────
+  Projects gallery page. Dark hero header + grid of project cards with
+  image overlays and hover zoom effects.
+  ─────────────────────────────────────────────────────────────────────────────
+*/}}
+{{- define "main" -}}
+
+<div class="project-list-hero">
+  <div class="container">
+    <h1 class="project-list-hero__title reveal">{{ .Title }}</h1>
+    {{- with .Description -}}
+      <p class="project-list-hero__description reveal reveal--d1">{{ . }}</p>
+    {{- end -}}
+  </div>
+</div>
+
+<div class="project-list-content">
+  <div class="container">
+
+    {{- with .Content -}}
+      <div class="prose reveal" style="margin-bottom: var(--space-12);">
+        {{ . }}
+      </div>
+    {{- end -}}
+
+    {{- with .Pages -}}
+    <div class="project-grid">
+      {{- range $i, $project := . -}}
+      <article class="project-card reveal reveal--d{{ add (mod $i 3) 1 }}">
+        <a href="{{ $project.RelPermalink }}" class="project-card__link">
+          <div class="project-card__image-wrap"
+               {{- with $project.Params.card_bg }} style="background: {{ . }}"{{ end -}}>
+            {{- with $project.Params.cover -}}
+              <img class="project-card__image"
+                   src="{{ . | relURL }}"
+                   alt="{{ $project.Title }}"
+                   loading="lazy"
+                   decoding="async">
+            {{- else -}}
+              <div class="project-card__placeholder">{{ $project.Title }}</div>
+            {{- end -}}
+            <div class="project-card__overlay" aria-hidden="true"></div>
+            <div class="project-card__info">
+              {{- with $project.Params.project_type -}}
+                <p class="project-card__type">{{ . }}</p>
+              {{- end -}}
+              <h3 class="project-card__title">{{ $project.Title }}</h3>
+              {{- with $project.Params.location -}}
+                <p class="project-card__location">{{ . }}</p>
+              {{- end -}}
+            </div>
+          </div>
+        </a>
+      </article>
+      {{- end -}}
+    </div>
+    {{- end -}}
+
+  </div>
+</div>
+
+{{- end -}}

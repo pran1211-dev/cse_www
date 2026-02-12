@@ -1,10 +1,11 @@
 {{/*
   layouts/partials/footer.html
   ─────────────────────────────────────────────────────────────────────────────
-  Site footer: brand column, services links, company nav, copyright.
+  Site footer: 4-column grid — brand, services, company nav, contact.
+  Clean layout with generous whitespace and scroll reveal animation.
   ─────────────────────────────────────────────────────────────────────────────
 */}}
-<footer class="site-footer" role="contentinfo">
+<footer class="site-footer reveal" role="contentinfo">
   <div class="container">
 
     <div class="footer-grid">
@@ -38,6 +39,15 @@
           {{- range .Site.Menus.main -}}
           <li><a href="{{ .URL }}">{{ .Name }}</a></li>
           {{- end -}}
+        </ul>
+      </div>
+
+      {{/* Contact info */}}
+      <div>
+        <h3 class="footer-heading">Contact</h3>
+        <ul class="footer-links" role="list">
+          <li>New York, NY</li>
+          <li><a href="mailto:info@cityscapeengineering.com">info@cityscapeengineering.com</a></li>
         </ul>
       </div>
 

@@ -1,0 +1,119 @@
+{{/*
+  layouts/projects/single.html
+  ─────────────────────────────────────────────────────────────────────────────
+  SHoP Architects-inspired project page: bold typographic title,
+  metadata bar, full-width images, centered text blocks, and
+  related projects grid. Vertical scroll storytelling format.
+
+  Front matter params:
+    project_type — e.g. "Mixed-Use Residential"
+    location     — e.g. "Long Island City, NY"
+    size         — e.g. "485,000 SF"
+    year         — e.g. "2025"
+    scope        — e.g. "New Construction"
+    card_bg      — CSS gradient for placeholder card background
+  ─────────────────────────────────────────────────────────────────────────────
+*/}}
+{{- define "main" -}}
+
+<article class="project">
+
+  {{/* ── Hero: bold title + summary ── */}}
+  <header class="project-hero">
+    <div class="container">
+      <h1 class="project-hero__title reveal">{{ .Title }}</h1>
+      {{- with .Description -}}
+        <p class="project-hero__summary reveal reveal--d1">{{ . }}</p>
+      {{- end -}}
+    </div>
+  </header>
+
+  {{/* ── Metadata bar ── */}}
+  <div class="project-meta reveal">
+    <div class="container">
+      <dl class="project-meta__grid">
+        {{- with .Params.location -}}
+        <div class="project-meta__item">
+          <dt>Location</dt>
+          <dd>{{ . }}</dd>
+        </div>
+        {{- end -}}
+        {{- with .Params.project_type -}}
+        <div class="project-meta__item">
+          <dt>Type</dt>
+          <dd>{{ . }}</dd>
+        </div>
+        {{- end -}}
+        {{- with .Params.size -}}
+        <div class="project-meta__item">
+          <dt>Size</dt>
+          <dd>{{ . }}</dd>
+        </div>
+        {{- end -}}
+        {{- with .Params.scope -}}
+        <div class="project-meta__item">
+          <dt>Scope</dt>
+          <dd>{{ . }}</dd>
+        </div>
+        {{- end -}}
+        {{- with .Params.year -}}
+        <div class="project-meta__item">
+          <dt>Year</dt>
+          <dd>{{ . }}</dd>
+        </div>
+        {{- end -}}
+      </dl>
+    </div>
+  </div>
+
+  {{/* ── Content: alternating text and images via Markdown + shortcodes ── */}}
+  <div class="project-content">
+    {{ .Content }}
+  </div>
+
+  {{/* ── Related projects ── */}}
+  {{- $related := where (where .Site.RegularPages "Section" "projects") ".RelPermalink" "!=" .RelPermalink -}}
+  {{- with first 3 $related -}}
+  <section class="related-projects" aria-labelledby="related-heading">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-accent section-accent--center"></span>
+        <h2 class="section-heading section-heading--center" id="related-heading">More Projects</h2>
+      </div>
+      <div class="project-grid">
+        {{- range $i, $project := . -}}
+        <article class="project-card reveal reveal--d{{ add $i 1 }}">
+          <a href="{{ $project.RelPermalink }}" class="project-card__link">
+            <div class="project-card__image-wrap"
+                 {{- with $project.Params.card_bg }} style="background: {{ . }}"{{ end -}}>
+              {{- with $project.Params.cover -}}
+                <img class="project-card__image"
+                     src="{{ . | relURL }}"
+                     alt="{{ $project.Title }}"
+                     loading="lazy"
+                     decoding="async">
+              {{- else -}}
+                <div class="project-card__placeholder">{{ $project.Title }}</div>
+              {{- end -}}
+              <div class="project-card__overlay" aria-hidden="true"></div>
+              <div class="project-card__info">
+                {{- with $project.Params.project_type -}}
+                  <p class="project-card__type">{{ . }}</p>
+                {{- end -}}
+                <h3 class="project-card__title">{{ $project.Title }}</h3>
+                {{- with $project.Params.location -}}
+                  <p class="project-card__location">{{ . }}</p>
+                {{- end -}}
+              </div>
+            </div>
+          </a>
+        </article>
+        {{- end -}}
+      </div>
+    </div>
+  </section>
+  {{- end -}}
+
+</article>
+
+{{- end -}}

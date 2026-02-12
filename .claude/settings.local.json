@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git pull:*)",
+      "Bash(git fetch:*)",
+      "Bash(hugo version:*)",
+      "Bash(git submodule status:*)",
+      "Bash(winget:*)",
+      "Bash(choco:*)",
+      "Bash(scoop:*)",
+      "Bash(hugo server:*)",
+      "WebFetch(domain:stonefieldeng.com)",
+      "WebFetch(domain:www.wsp.com)",
+      "WebFetch(domain:www.shoparc.com)",
+      "WebSearch"
+    ]
+  }
+}
