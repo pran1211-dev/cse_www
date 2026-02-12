@@ -1,0 +1,31 @@
+{{/*
+  layouts/partials/header.html
+  ─────────────────────────────────────────────────────────────────────────────
+  Sticky site navigation. Logo left, nav links right.
+  On mobile, links wrap below the logo. No JavaScript required.
+  ─────────────────────────────────────────────────────────────────────────────
+*/}}
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="site-header__inner">
+
+      <a href="{{ "/" | relURL }}" class="site-logo" aria-label="{{ .Site.Title }} — Home">
+        <span class="site-logo__accent">cse</span> cityscape
+      </a>
+
+      <nav aria-label="Main navigation">
+        <ul class="site-nav" role="list">
+          {{- range .Site.Menus.main -}}
+          <li class="site-nav__item">
+            <a href="{{ .URL }}"
+               {{- if eq $.RelPermalink .URL }} aria-current="page"{{ end -}}>
+              {{- .Name -}}
+            </a>
+          </li>
+          {{- end -}}
+        </ul>
+      </nav>
+
+    </div>
+  </div>
+</header>

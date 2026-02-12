@@ -1,0 +1,20 @@
+{{/*
+  layouts/_default/baseof.html
+  ─────────────────────────────────────────────────────────────────────────────
+  Base page shell. All page templates extend this via `define "main"`.
+  Loads custom CSS via Hugo Pipes — does not use PaperMod's base template.
+  ─────────────────────────────────────────────────────────────────────────────
+*/}}
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en-us" }}">
+  <head>
+    {{- partial "head.html" . -}}
+  </head>
+  <body>
+    {{- partial "header.html" . -}}
+    <main id="main-content" tabindex="-1">
+      {{- block "main" . }}{{- end }}
+    </main>
+    {{- partial "footer.html" . -}}
+  </body>
+</html>

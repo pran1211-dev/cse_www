@@ -1,0 +1,55 @@
+{{/*
+  layouts/partials/home/hero.html
+  ─────────────────────────────────────────────────────────────────────────────
+  Full-width hero section with optional background image, dark overlay,
+  heading, subtitle, and CTA button.
+
+  Params (page front matter or hugo.toml [params]):
+    hero_image      — path in assets/, e.g. "images/hero.jpg"
+    hero_heading    — primary heading (default: "Solutions Engineered")
+    hero_subheading — subtitle line
+    hero_cta_text   — CTA button label
+    hero_cta_link   — CTA button URL
+  ─────────────────────────────────────────────────────────────────────────────
+*/}}
+
+{{- $heading := .Param "hero_heading"    | default "Solutions Engineered" -}}
+{{- $sub     := .Param "hero_subheading" | default "Structural Engineering — NY · NJ · CT" -}}
+{{- $ctaText := .Param "hero_cta_text"   | default "Explore Services" -}}
+{{- $ctaLink := .Param "hero_cta_link"   | default "/services/" -}}
+{{- $imgPath := .Param "hero_image" -}}
+
+<section class="hero" aria-label="Hero">
+
+  {{/* Background image — processed by Hugo Pipes if present */}}
+  {{- with $imgPath -}}
+    {{- $src := resources.Get . -}}
+    {{- if $src -}}
+      {{- $sm := $src.Resize "800x webp"  -}}
+      {{- $md := $src.Resize "1400x webp" -}}
+      {{- $lg := $src.Resize "2000x webp" -}}
+      <picture>
+        <source srcset="{{ $lg.RelPermalink }}" media="(min-width: 1200px)">
+        <source srcset="{{ $md.RelPermalink }}" media="(min-width: 768px)">
+        <img class="hero__bg"
+             src="{{ $sm.RelPermalink }}"
+             alt=""
+             role="presentation"
+             loading="eager"
+             decoding="async">
+      </picture>
+    {{- end -}}
+  {{- end -}}
+
+  <div class="hero__overlay" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="hero__content">
+      <p class="hero__eyebrow">{{ .Site.Title }}</p>
+      <h1 class="hero__title">{{ $heading }}</h1>
+      <p class="hero__subtitle">{{ $sub }}</p>
+      <a href="{{ $ctaLink }}" class="hero__cta">{{ $ctaText }}</a>
+    </div>
+  </div>
+
+</section>

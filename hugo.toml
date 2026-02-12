@@ -1,0 +1,40 @@
+baseURL = 'https://cityscapeengineering.com/'
+languageCode = 'en-us'
+title = 'CityScape Engineering'
+theme = 'PaperMod'
+
+enableRobotsTXT = true
+summaryLength = 30
+
+[params]
+  description = 'Structural engineering services for residential, commercial, industrial, and mixed-use construction across New York, New Jersey, and Connecticut.'
+  author = 'CityScape Engineering'
+
+  # Homepage hero — override on content/_index.md [params] if needed
+  hero_image      = 'images/hero.jpg'
+  hero_heading    = 'Solutions Engineered'
+  hero_subheading = 'Structural Engineering — NY · NJ · CT'
+  hero_cta_text   = 'Explore Services'
+  hero_cta_link   = '/services/'
+
+[menu]
+  [[menu.main]]
+    name   = 'About'
+    url    = '/about/'
+    weight = 10
+  [[menu.main]]
+    name   = 'Services'
+    url    = '/services/'
+    weight = 20
+  [[menu.main]]
+    name   = 'Projects'
+    url    = '/projects/'
+    weight = 30
+  [[menu.main]]
+    name   = 'News'
+    url    = '/posts/'
+    weight = 40
+  [[menu.main]]
+    name   = 'Contact'
+    url    = '/contact/'
+    weight = 50

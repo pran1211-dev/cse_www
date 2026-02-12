@@ -1,0 +1,53 @@
+{{/*
+  layouts/partials/footer.html
+  ─────────────────────────────────────────────────────────────────────────────
+  Site footer: brand column, services links, company nav, copyright.
+  ─────────────────────────────────────────────────────────────────────────────
+*/}}
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+
+    <div class="footer-grid">
+
+      {{/* Brand + tagline */}}
+      <div>
+        <div class="footer-brand">
+          <span class="footer-brand__accent">cse</span> cityscape
+        </div>
+        <p class="footer-tagline">
+          Structural engineering for residential, commercial, industrial, and
+          mixed-use construction across New York, New Jersey, and Connecticut.
+        </p>
+      </div>
+
+      {{/* Services links */}}
+      <div>
+        <h3 class="footer-heading">Services</h3>
+        <ul class="footer-links" role="list">
+          <li><a href="/services/#structural">Structural</a></li>
+          <li><a href="/services/#inspection">Inspection</a></li>
+          <li><a href="/services/#peer-review">Peer Review</a></li>
+          <li><a href="/services/#civil">Civil</a></li>
+        </ul>
+      </div>
+
+      {{/* Site nav */}}
+      <div>
+        <h3 class="footer-heading">Company</h3>
+        <ul class="footer-links" role="list">
+          {{- range .Site.Menus.main -}}
+          <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+          {{- end -}}
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">
+        &copy; {{ now.Year }} {{ .Site.Title }}. All rights reserved.
+      </p>
+    </div>
+
+  </div>
+</footer>

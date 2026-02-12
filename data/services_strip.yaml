@@ -1,0 +1,15 @@
+# Homepage teal accent strip — 4 primary service areas.
+# icon_path: inner SVG elements (paths, circles, etc.) as a string.
+# These render inside a 24x24 viewBox with stroke="currentColor".
+
+- label: Support of Excavation
+  icon_path: '<path d="M2 22h20"/><path d="M6 22V8l6-6 6 6v14"/><path d="M9 22v-6h6v6"/>'
+
+- label: Demolition
+  icon_path: '<path d="M3 12h18"/><path d="M3 6h18"/><path d="M9 18l3 3 3-3"/><path d="M12 21V12"/>'
+
+- label: Rehabilitation
+  icon_path: '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>'
+
+- label: New Construction
+  icon_path: '<path d="M2 20h20"/><path d="M4 20V10l8-6 8 6v10"/><path d="M10 20v-5h4v5"/>'

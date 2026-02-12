@@ -1,0 +1,48 @@
+# Homepage services grid — 4 columns with detailed sub-service lists.
+# id: used as an anchor (#structural, #inspection, etc.) for footer links.
+# icon_path: inner SVG elements for a 24x24 stroke viewBox.
+
+- title: CSE Structural
+  id: structural
+  icon_path: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/>'
+  items:
+    - New Construction
+    - Alterations and Additions
+    - Structural Rehabilitation
+    - Historic Renovations
+    - Retaining Structures, Bridge and Culvert Design
+    - Demolition Plan
+    - Support of Excavations (SOE)
+    - Feasibility Studies
+    - Structural Investigation (Forensic)
+
+- title: CSE Inspection
+  id: inspection
+  icon_path: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>'
+  items:
+    - Structural Cold-Formed Steel
+    - Concrete Cast in Place Masonry
+    - Soils, Site Preparation
+    - Soils Placement / Pile
+    - Deep Foundations Underpinning
+    - Excavation, Shoring and Bracing
+    - Structural Stability
+    - Mechanical Demolition
+
+- title: CSE Peer Review
+  id: peer-review
+  icon_path: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/>'
+  items:
+    - Value Engineering
+    - Evaluation of Alternate Systems
+    - Condition Assessment
+    - Cost Estimate
+
+- title: CSE Civil
+  id: civil
+  icon_path: '<path d="M3 17l3-3 4 4 4-6 3 5"/><path d="M21 21H3"/>'
+  items:
+    - Builders Pavement Plan
+    - Feasibility Studies
+    - Vibration Monitoring
+    - Crack Monitoring

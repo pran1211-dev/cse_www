@@ -1,0 +1,27 @@
+{{/*
+  layouts/_default/single.html
+  ─────────────────────────────────────────────────────────────────────────────
+  Default single-page template for all content pages (about, contact, etc.).
+  Dark header band + white prose content area.
+  ─────────────────────────────────────────────────────────────────────────────
+*/}}
+{{- define "main" -}}
+
+<div class="page-hero">
+  <div class="container">
+    <h1 class="page-hero__title">{{ .Title }}</h1>
+    {{- with .Description -}}
+      <p class="page-hero__description">{{ . }}</p>
+    {{- end -}}
+  </div>
+</div>
+
+<div class="page-content">
+  <div class="container">
+    <div class="prose">
+      {{ .Content }}
+    </div>
+  </div>
+</div>
+
+{{- end -}}

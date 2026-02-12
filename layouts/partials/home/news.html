@@ -1,0 +1,42 @@
+{{/*
+  layouts/partials/home/news.html
+  ─────────────────────────────────────────────────────────────────────────────
+  Latest news/blog posts section. Shows the 3 most recent posts from
+  the "posts" section. Section is hidden if no posts exist.
+  ─────────────────────────────────────────────────────────────────────────────
+*/}}
+
+{{- $posts  := where .Site.RegularPages "Section" "posts" -}}
+{{- $recent := first 3 $posts -}}
+
+{{- with $recent -}}
+<section class="news-section" aria-labelledby="news-heading">
+  <div class="container">
+    <h2 class="section-heading" id="news-heading">news</h2>
+    <div class="news-grid">
+      {{- range . -}}
+      <article class="news-card">
+        <p class="news-card__date">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">
+            {{- .Date.Format "January 2, 2006" -}}
+          </time>
+        </p>
+        <h3 class="news-card__title">
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </h3>
+        {{- with .Description -}}
+          <p class="news-card__excerpt">{{ . }}</p>
+        {{- else -}}
+          {{- with .Summary -}}
+            <p class="news-card__excerpt">{{ . }}</p>
+          {{- end -}}
+        {{- end -}}
+      </article>
+      {{- end -}}
+    </div>
+    <div class="news-cta">
+      <a href="/posts/" class="btn btn--outline">All Updates</a>
+    </div>
+  </div>
+</section>
+{{- end -}}

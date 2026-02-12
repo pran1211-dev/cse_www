@@ -1,0 +1,77 @@
+{{/*
+  layouts/partials/head.html
+  ─────────────────────────────────────────────────────────────────────────────
+  Document <head>: charset, viewport, SEO meta, Open Graph, and CSS.
+  ─────────────────────────────────────────────────────────────────────────────
+*/}}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+{{/* ── Title ── */}}
+<title>
+  {{- if .IsHome -}}
+    {{ .Site.Title }}
+  {{- else -}}
+    {{ .Title }} | {{ .Site.Title }}
+  {{- end -}}
+</title>
+
+{{/* ── Meta description ── */}}
+{{- with (.Description | default .Site.Params.description) -}}
+  <meta name="description" content="{{ . }}">
+{{- end -}}
+
+{{/* ── Canonical ── */}}
+<link rel="canonical" href="{{ .Permalink }}">
+
+{{/* ── Robots ── */}}
+{{- if .Params.noindex -}}
+  <meta name="robots" content="noindex, nofollow">
+{{- end -}}
+
+{{/* ── Open Graph ── */}}
+<meta property="og:site_name"   content="{{ .Site.Title }}">
+<meta property="og:type"        content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:title"       content="{{ .Title }}">
+<meta property="og:description" content="{{ .Description | default .Site.Params.description }}">
+<meta property="og:url"         content="{{ .Permalink }}">
+{{- with .Params.cover -}}
+  <meta property="og:image" content="{{ . | absURL }}">
+{{- end -}}
+
+{{/* ── Twitter card ── */}}
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="{{ .Title }}">
+<meta name="twitter:description" content="{{ .Description | default .Site.Params.description }}">
+
+{{/* ── Favicon ── */}}
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+{{/* ── CSS via Hugo Pipes ── */}}
+{{- $css := resources.Get "css/main.css" -}}
+{{- if $css -}}
+  {{- if hugo.IsProduction -}}
+    {{- $css = $css | minify | fingerprint -}}
+  {{- end -}}
+  <link rel="stylesheet"
+        href="{{ $css.RelPermalink }}"
+        {{- if hugo.IsProduction }} integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous"{{ end }}>
+{{- end -}}
+
+{{/* ── Organization structured data (homepage only) ── */}}
+{{- if .IsHome -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "{{ .Site.Title }}",
+  "url": "{{ .Site.BaseURL }}",
+  "description": "{{ .Site.Params.description }}",
+  "areaServed": ["New York", "New Jersey", "Connecticut"],
+  "serviceType": "Structural Engineering"
+}
+</script>
+{{- end -}}

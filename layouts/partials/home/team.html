@@ -1,0 +1,40 @@
+{{/*
+  layouts/partials/home/team.html
+  ─────────────────────────────────────────────────────────────────────────────
+  Team member grid. Sourced from data/team.yaml.
+  Section is hidden entirely if the data file is absent or empty.
+
+  data/team.yaml shape:
+    - name: Jane Smith, P.E.
+      role: Principal Engineer
+      photo: images/team/jane-smith.jpg   ← path relative to static/
+  ─────────────────────────────────────────────────────────────────────────────
+*/}}
+
+{{- with .Site.Data.team -}}
+<section class="team-section" aria-labelledby="team-heading">
+  <div class="container">
+    <h2 class="section-heading" id="team-heading">meet our team</h2>
+    <div class="team-grid">
+      {{- range . -}}
+      <div class="team-card">
+
+        {{- with .photo -}}
+          <img class="team-card__photo"
+               src="{{ . | relURL }}"
+               alt="{{ $.name }}"
+               loading="lazy"
+               decoding="async">
+        {{- else -}}
+          <div class="team-card__photo--placeholder" role="img" aria-label="{{ .name }}"></div>
+        {{- end -}}
+
+        <p class="team-card__name">{{ .name }}</p>
+        <p class="team-card__role">{{ .role }}</p>
+
+      </div>
+      {{- end -}}
+    </div>
+  </div>
+</section>
+{{- end -}}

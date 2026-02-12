@@ -1,0 +1,49 @@
+{{/*
+  layouts/partials/home/services-grid.html
+  ─────────────────────────────────────────────────────────────────────────────
+  Four-column services grid with teal-accented category titles and
+  sub-service item lists. Content from data/services_grid.yaml.
+
+  data/services_grid.yaml shape:
+    - title: CSE Structural
+      id: structural              ← used as anchor (#structural)
+      icon_path: '<path d="..." />'
+      items:
+        - New Construction
+        - Alterations and Additions
+  ─────────────────────────────────────────────────────────────────────────────
+*/}}
+
+{{- with .Site.Data.services_grid -}}
+<section class="services-section" aria-labelledby="services-heading">
+  <div class="container">
+    <h2 class="section-heading" id="services-heading">services</h2>
+    <div class="services-grid">
+      {{- range . -}}
+      <div class="service-card" {{- with .id }} id="{{ . }}"{{- end -}}>
+
+        <svg class="service-card__icon"
+             viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="1.5"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             aria-hidden="true">
+          {{- .icon_path | safeHTML -}}
+        </svg>
+
+        <h3 class="service-card__title">{{ .title }}</h3>
+
+        <ul class="service-card__list" role="list">
+          {{- range .items -}}
+          <li>{{ . }}</li>
+          {{- end -}}
+        </ul>
+
+      </div>
+      {{- end -}}
+    </div>
+  </div>
+</section>
+{{- end -}}
