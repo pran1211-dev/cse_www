@@ -1,0 +1,122 @@
+{{/*
+  layouts/posts/list.html
+  ---------------------------------------------------------------------------
+  SHoP-inspired news listing. Clean, editorial layout:
+    1. Minimal intro text
+    2. Featured post — large image with details below
+    3. Remaining posts — vertical list with optional side images
+
+  All posts link externally via params.external_url (target="_blank").
+  No individual post pages are generated on this site.
+
+  Posts should have front matter:
+    title, date, description, params.source (publication name),
+    params.external_url (link to original article),
+    params.cover (optional image path in assets/)
+  ---------------------------------------------------------------------------
+*/}}
+{{- define "main" -}}
+
+{{/* ── Intro ── */}}
+<section class="news-intro">
+  <div class="container">
+    <p class="news-intro__text reveal">
+      Updates, insights, and project news from
+      <strong>CityScape Engineering.</strong>
+    </p>
+  </div>
+</section>
+
+{{- $posts := .Pages.ByDate.Reverse -}}
+
+{{/* ── Featured Post (most recent) ── */}}
+{{- with index $posts 0 -}}
+  {{- $url := .Params.external_url | default .RelPermalink -}}
+<section class="news-featured">
+  <div class="container">
+    <a href="{{ $url }}" target="_blank" rel="noopener noreferrer" class="news-featured__link">
+      {{/* Cover image or placeholder */}}
+      <div class="news-featured__image-wrap reveal">
+        {{- with .Params.cover -}}
+          {{- $src := resources.Get . -}}
+          {{- if $src -}}
+            {{- $img := $src.Resize "1400x webp" -}}
+            <img class="news-featured__image" src="{{ $img.RelPermalink }}" alt="{{ $.Title }}" loading="eager">
+          {{- else -}}
+            <div class="news-featured__placeholder" aria-hidden="true">
+              <span>Featured</span>
+            </div>
+          {{- end -}}
+        {{- else -}}
+          <div class="news-featured__placeholder" aria-hidden="true">
+            <span>Featured</span>
+          </div>
+        {{- end -}}
+      </div>
+      <div class="news-featured__details reveal reveal--d1">
+        <div class="news-featured__meta">
+          {{- with .Params.source -}}
+            <span class="news-featured__source">{{ . }}</span>
+          {{- end -}}
+          <time class="news-featured__date" datetime="{{ .Date.Format "2006-01-02" }}">
+            {{- .Date.Format "January 2, 2006" -}}
+          </time>
+        </div>
+        <h2 class="news-featured__title">{{ .Title }}</h2>
+        {{- with .Description -}}
+          <p class="news-featured__excerpt">{{ . }}</p>
+        {{- end -}}
+      </div>
+    </a>
+  </div>
+</section>
+{{- end -}}
+
+{{/* ── Remaining Posts ── */}}
+{{- $rest := after 1 $posts -}}
+{{- with $rest -}}
+<section class="news-list">
+  <div class="container">
+    {{- range $i, $post := . -}}
+      {{- $url := $post.Params.external_url | default $post.RelPermalink -}}
+    <article class="news-list-item reveal">
+      <a href="{{ $url }}" target="_blank" rel="noopener noreferrer" class="news-list-item__link">
+        <div class="news-list-item__text">
+          <div class="news-list-item__meta">
+            {{- with $post.Params.source -}}
+              <span class="news-list-item__source">{{ . }}</span>
+            {{- end -}}
+            <time class="news-list-item__date" datetime="{{ $post.Date.Format "2006-01-02" }}">
+              {{- $post.Date.Format "January 2, 2006" -}}
+            </time>
+          </div>
+          <h2 class="news-list-item__title">{{ $post.Title }}</h2>
+          {{- with $post.Description -}}
+            <p class="news-list-item__excerpt">{{ . }}</p>
+          {{- end -}}
+        </div>
+        {{- with $post.Params.cover -}}
+          {{- $src := resources.Get . -}}
+          {{- if $src -}}
+            {{- $thumb := $src.Resize "500x webp" -}}
+            <div class="news-list-item__image-wrap">
+              <img class="news-list-item__image" src="{{ $thumb.RelPermalink }}" alt="{{ $post.Title }}" loading="lazy">
+            </div>
+          {{- else -}}
+            <div class="news-list-item__image-wrap">
+              <div class="news-list-item__placeholder" aria-hidden="true"></div>
+            </div>
+          {{- end -}}
+        {{- else -}}
+          <div class="news-list-item__image-wrap">
+            <div class="news-list-item__placeholder" aria-hidden="true"></div>
+          </div>
+        {{- end -}}
+      </a>
+    </article>
+    {{- end -}}
+  </div>
+</section>
+{{- end -}}
+
+{{- end -}}

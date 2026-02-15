@@ -1,6 +1,10 @@
 +++
 title = "Contact"
+layout = "contact"
 description = "Get in touch with CityScape Engineering for structural engineering services in New York, New Jersey, and Connecticut."
+
+[params]
+  hero_image = "images/contact-bg.png"
 +++
 
 ## Get in Touch
@@ -10,11 +14,12 @@ Whether you're planning a new build, need a structural assessment, or require en
 ## Office
 
 **CityScape Engineering**
-New York, NY
+9 Main Street
+Port Washington, NY 11050
 
 **Email:** info@cityscapeengineering.com
 
-**Phone:** (212) 555-0100
+**Phone:** (631) 978-5000
 
 ## Service Area
 

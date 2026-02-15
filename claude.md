@@ -98,6 +98,33 @@ Never edit files inside `themes/PaperMod/`. Always override by placing files in 
 - PaperMod-specific params go under `[params]`. Refer to the PaperMod documentation for available options: https://github.com/adityatelange/hugo-PaperMod/wiki
 - Use `hugo.toml` — not `config.toml`, `config.yaml`, or `config/` directory splitting — unless the config grows unmanageably large.
 
+## News Page (Posts)
+
+The news page (`/posts/`) is an **external link listing only**. It is not a blog.
+
+- **No individual post pages are generated.** The `_index.md` cascade sets `_build.render = "never"` for all posts.
+- Every post in `content/posts/` must have `external_url` in its front matter params, linking to the original article on an external site.
+- All news links open in a new tab (`target="_blank"`).
+- The Markdown body of a post is **not rendered** anywhere on the site — only `title`, `date`, `description`, `source`, `external_url`, and `cover` from front matter are used.
+- The most recent post is displayed as the featured article with a large image. All others appear in a vertical list below.
+- Do not create internal blog post content. The news page curates links to external press and industry articles.
+
+### News Post Front Matter
+
+```toml
++++
+title = "Article Title"
+date = 2026-02-14
+description = "Brief summary for the listing."
+draft = false
+
+[params]
+  source = "Publication Name"
+  external_url = "https://example.com/article"
+  cover = "images/optional-cover.jpg"
++++
+```
+
 ## Content Conventions
 
 ### Front Matter Format

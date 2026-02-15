@@ -1,0 +1,49 @@
+{{/*
+  layouts/_default/contact.html
+  ---------------------------------------------------------------------------
+  Contact page layout. Same structure as the default single page but with
+  a background image on the hero section.
+
+  Front matter params:
+    hero_image — path in assets/, e.g. "images/contact-bg.png"
+  ---------------------------------------------------------------------------
+*/}}
+{{- define "main" -}}
+
+<div class="page-hero page-hero--bg">
+  {{- with .Params.hero_image -}}
+    {{- $src := resources.Get . -}}
+    {{- if $src -}}
+      {{- $sm := $src.Resize "800x webp" -}}
+      {{- $md := $src.Resize "1400x webp" -}}
+      {{- $lg := $src.Resize "2000x webp" -}}
+      <picture>
+        <source srcset="{{ $lg.RelPermalink }}" media="(min-width: 1200px)">
+        <source srcset="{{ $md.RelPermalink }}" media="(min-width: 768px)">
+        <img class="page-hero__bg"
+             src="{{ $sm.RelPermalink }}"
+             alt=""
+             role="presentation"
+             loading="eager"
+             decoding="async">
+      </picture>
+    {{- end -}}
+  {{- end -}}
+  <div class="page-hero__overlay" aria-hidden="true"></div>
+  <div class="container">
+    <h1 class="page-hero__title reveal">{{ .Title }}</h1>
+    {{- with .Description -}}
+      <p class="page-hero__description reveal reveal--d1">{{ . }}</p>
+    {{- end -}}
+  </div>
+</div>
+
+<div class="page-content">
+  <div class="container">
+    <div class="prose reveal">
+      {{ .Content }}
+    </div>
+  </div>
+</div>
+
+{{- end -}}

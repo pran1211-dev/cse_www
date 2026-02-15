@@ -21,6 +21,10 @@
 
 {{/* ── 1. Hero Intro ── */}}
 <section class="about-hero" aria-label="Introduction">
+  <video class="about-hero__video" autoplay muted loop playsinline aria-hidden="true">
+    <source src="{{ "videos/about-hero.mp4" | relURL }}" type="video/mp4">
+  </video>
+  <div class="about-hero__overlay" aria-hidden="true"></div>
   <div class="container">
     <span class="section-accent reveal reveal--fade"></span>
     <h1 class="about-hero__title reveal">{{ .Title }}</h1>
@@ -125,5 +129,6 @@
     </div>
   </div>
 </section>
+
 
 {{- end -}}

@@ -2,6 +2,11 @@
 title = "When Do You Need a Structural Assessment?"
 date = 2026-01-15
 description = "A guide for property owners and contractors on when a structural engineering assessment is required — and why it matters for safety and project approvals."
+
+[params]
+  source = "CityScape Engineering"
+  external_url = "#"
+  cover = ""
 +++
 
 Structural assessments are one of the most common services we provide at CityScape Engineering. Whether you're planning a renovation, purchasing a property, or responding to visible damage, understanding when a professional structural evaluation is needed can save time, money, and potentially prevent serious safety issues.
