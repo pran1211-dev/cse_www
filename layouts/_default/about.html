@@ -1,0 +1,129 @@
+{{/*
+  layouts/_default/about.html
+  ---------------------------------------------------------------------------
+  Custom about page layout inspired by H2M architects. Sections:
+    1. Hero intro — bold statement over dark background
+    2. Mission pillars — 3-column cards (clients, expertise, community)
+    3. Approach — split layout with heading + bullet points
+    4. Values — vision statement + values grid
+    5. Service area — tri-state coverage
+    6. CTA band — contact call-to-action
+
+  Front matter params:
+    intro_statement   — bold hero statement text
+    pillars           — array of {heading, text} for 3-column section
+    vision            — vision statement text
+    values            — array of {name, text} for values grid
+    areas             — array of {name, detail} for service area section
+  ---------------------------------------------------------------------------
+*/}}
+{{- define "main" -}}
+
+{{/* ── 1. Hero Intro ── */}}
+<section class="about-hero" aria-label="Introduction">
+  <div class="container">
+    <span class="section-accent reveal reveal--fade"></span>
+    <h1 class="about-hero__title reveal">{{ .Title }}</h1>
+    {{- with .Params.intro_statement -}}
+      <p class="about-hero__statement reveal reveal--d1">{{ . }}</p>
+    {{- end -}}
+    {{- with .Description -}}
+      <p class="about-hero__description reveal reveal--d2">{{ . }}</p>
+    {{- end -}}
+  </div>
+</section>
+
+{{/* ── 2. Mission Pillars ── */}}
+{{- with .Params.pillars -}}
+<section class="about-pillars" aria-labelledby="pillars-heading">
+  <div class="container">
+    <h2 id="pillars-heading" class="sr-only">Our Mission</h2>
+    <div class="about-pillars__grid">
+      {{- range $i, $p := . -}}
+        <div class="about-pillar reveal reveal--d{{ add $i 1 }}">
+          <span class="about-pillar__accent"></span>
+          <h3 class="about-pillar__heading">{{ $p.heading }}</h3>
+          <p class="about-pillar__text">{{ $p.text }}</p>
+        </div>
+      {{- end -}}
+    </div>
+  </div>
+</section>
+{{- end -}}
+
+{{/* ── 3. Approach (rendered from Markdown body) ── */}}
+{{- with .Content -}}
+<section class="about-approach" aria-labelledby="approach-heading">
+  <div class="container">
+    <div class="about-approach__inner">
+      <div class="about-approach__content prose reveal">
+        {{ . }}
+      </div>
+    </div>
+  </div>
+</section>
+{{- end -}}
+
+{{/* ── 4. Vision & Values ── */}}
+{{- if or .Params.vision .Params.values -}}
+<section class="about-values" aria-labelledby="values-heading">
+  <div class="container">
+    {{- with .Params.vision -}}
+      <div class="about-values__vision reveal">
+        <span class="section-accent section-accent--center"></span>
+        <h2 id="values-heading" class="about-values__vision-heading">Our Vision</h2>
+        <p class="about-values__vision-text">{{ . }}</p>
+      </div>
+    {{- end -}}
+    {{- with $.Params.values -}}
+      <div class="about-values__grid">
+        {{- range $i, $v := . -}}
+          <div class="about-value reveal reveal--d{{ add $i 1 }}">
+            <h3 class="about-value__name">{{ $v.name }}</h3>
+            {{- with $v.text -}}
+              <p class="about-value__text">{{ . }}</p>
+            {{- end -}}
+          </div>
+        {{- end -}}
+      </div>
+    {{- end -}}
+  </div>
+</section>
+{{- end -}}
+
+{{/* ── 5. Service Area ── */}}
+{{- with .Params.areas -}}
+<section class="about-areas" aria-labelledby="areas-heading">
+  <div class="container">
+    <span class="section-accent reveal"></span>
+    <h2 id="areas-heading" class="section-heading reveal">Service Area</h2>
+    <p class="section-subheading reveal reveal--d1">Serving clients throughout the tri-state area.</p>
+    <div class="about-areas__grid">
+      {{- range $i, $a := . -}}
+        <div class="about-area reveal reveal--d{{ add $i 1 }}">
+          <h3 class="about-area__name">{{ $a.name }}</h3>
+          <p class="about-area__detail">{{ $a.detail }}</p>
+        </div>
+      {{- end -}}
+    </div>
+  </div>
+</section>
+{{- end -}}
+
+{{/* ── 6. CTA Band ── */}}
+<section class="about-cta" aria-label="Contact">
+  <div class="container">
+    <div class="about-cta__inner reveal">
+      <h2 class="about-cta__heading">Ready to start your project?</h2>
+      <p class="about-cta__text">Get in touch to discuss how we can help with your next structural engineering challenge.</p>
+      <a href="/contact/" class="btn btn--primary">
+        Contact Us
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+{{- end -}}
