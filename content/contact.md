@@ -7,10 +7,6 @@ description = "Get in touch with CityScape Engineering for structural engineerin
   hero_image = "images/contact-bg.png"
 +++
 
-## Get in Touch
-
-Whether you're planning a new build, need a structural assessment, or require engineering support for an ongoing project, we'd like to hear from you.
-
 ## Office
 
 **CityScape Engineering**
@@ -21,9 +17,7 @@ Port Washington, NY 11050
 
 **Phone:** (631) 978-5000
 
-## Service Area
-
-We serve clients across the tri-state area, including all five boroughs of New York City, Long Island, Northern New Jersey, and Fairfield County, Connecticut.
+{{< linkedin url="https://www.linkedin.com/company/cityscape-engineering-pllc/posts/?feedView=all" >}}
 
 ## Working With Us
 
