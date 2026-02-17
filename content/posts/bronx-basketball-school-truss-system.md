@@ -6,7 +6,8 @@ draft = false
 
 [params]
   source = "Engineering News-Record"
-  cover = ""
+  cover = "images/bronx-truss-cover.jpg"
+
   external_url = "https://www.enr.com/articles/62415-project-team-deploys-custom-truss-system-at-bronx-basketball-school"
 +++
 

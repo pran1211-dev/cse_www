@@ -1,4 +1,5 @@
-# Homepage services grid — 4 columns with detailed sub-service lists.
+# Services grid — 4 columns with detailed sub-service lists.
+# Used on homepage and /services/ page.
 # id: used as an anchor (#structural, #inspection, etc.) for footer links.
 # icon_path: inner SVG elements for a 24x24 stroke viewBox.
 
@@ -9,8 +10,9 @@
     - New Construction
     - Alterations and Additions
     - Structural Rehabilitation
-    - Historic Renovations
-    - Retaining Structures, Bridge and Culvert Design
+    - Historic Restorations
+    - Retaining Structures
+    - Bridge and Culvert Design
     - Demolition Plan
     - Support of Excavations (SOE)
     - Feasibility Studies
@@ -20,12 +22,14 @@
   id: inspection
   icon_path: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>'
   items:
-    - Structural Cold-Formed Steel
-    - Concrete Cast in Place Masonry
+    - Structural Cold Formed Steel
+    - Concrete Cast in Place
+    - Masonry
     - Soils, Site Preparation
-    - Soils Placement / Pile
-    - Deep Foundations Underpinning
-    - Excavation, Shoring and Bracing
+    - Soils, Placement / Piles
+    - Deep Foundations
+    - Underpinning
+    - Excavation, Sheeting, Shoring and Bracing
     - Structural Stability
     - Mechanical Demolition
 
@@ -34,7 +38,7 @@
   icon_path: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/>'
   items:
     - Value Engineering
-    - Evaluation of Alternate Systems
+    - Evaluation of Alternate System
     - Condition Assessment
     - Cost Estimate
 
