@@ -411,6 +411,8 @@ ul, ol { margin: 0; padding: 0; }
 
   .has-js .nav-toggle {
     display: flex;
+    order: 1;
+    margin-left: auto;
   }
 
   .has-js .site-nav {
@@ -436,6 +438,11 @@ ul, ol { margin: 0; padding: 0; }
   /* Interior pages: solid dropdown bg */
   .has-js .inner .site-nav {
     background-color: var(--color-bg);
+  }
+
+  /* Homepage before scroll: dark dropdown so white text is visible */
+  .has-js .home .site-header:not(.is-scrolled) .site-nav {
+    background-color: var(--color-dark);
   }
 }
 
