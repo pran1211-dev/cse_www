@@ -9,12 +9,12 @@ This is a small business website built with **Hugo** using the **PaperMod** them
 **Business:** Cityscape Engineering
 **Website:** https://cityscapeengineering.com
 **Industry:** Structural engineering
-**Service area:** New York (NY), New Jersey (NJ), and Connecticut (CT)
+**Service area:** New York (NY), New Jersey (NJ), Connecticut (CT), and Pennsylvania (PA)
 **Clients served:** All construction types — residential, commercial, industrial, and mixed-use
 
 This context should inform all content, SEO, and copy decisions:
 
-- Titles, descriptions, and headings should reference relevant service areas (NY, NJ, CT) and construction types where natural
+- Titles, descriptions, and headings should reference relevant service areas (NY, NJ, CT, PA) and construction types where natural
 - The audience is a mix of property owners, contractors, architects, and developers — write for a professional but non-engineer readership
 - Structural engineering is a licensed, regulated profession — avoid overclaiming credentials or scope of work; flag anything that needs professional review
 - Local SEO matters: service area signals (city names, state abbreviations) belong in page titles, descriptions, and body copy for service pages
