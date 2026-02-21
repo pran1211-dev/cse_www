@@ -46,7 +46,7 @@
   id: civil
   icon_path: '<path d="M3 17l3-3 4 4 4-6 3 5"/><path d="M21 21H3"/>'
   items:
-    - Builders Pavement Plan
+    - Optical Monitoring
     - Feasibility Studies
     - Vibration Monitoring
     - Crack Monitoring

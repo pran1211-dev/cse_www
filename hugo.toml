@@ -7,19 +7,19 @@ enableRobotsTXT = true
 summaryLength = 30
 
 [params]
-  description = 'Structural engineering services for residential, commercial, industrial, and mixed-use construction across New York, New Jersey, and Connecticut.'
+  description = 'Structural engineering services for residential, commercial, industrial, and mixed-use construction across New York, New Jersey, Connecticut, and Pennsylvania.'
   author = 'CityScape Engineering'
 
   # Homepage hero — override on content/_index.md [params] if needed
   hero_image      = 'images/hero.jpg'
   hero_heading    = 'Solutions Engineered'
-  hero_subheading = 'Structural Engineering — NY · NJ · CT'
+  hero_subheading = 'Structural Engineering — NY · NJ · CT · PA'
   hero_cta_text   = 'Explore Services'
   hero_cta_link   = '/services/'
 
   # Homepage about statement section
   about_heading  = 'Engineering the structures that shape our cities'
-  about_text     = 'From high-rise towers to historic restorations, CityScape Engineering delivers structural solutions that are safe, efficient, and built to last. We work across all construction types — residential, commercial, industrial, and mixed-use — throughout New York, New Jersey, and Connecticut.'
+  about_text     = 'From high-rise towers to historic restorations, CityScape Engineering delivers structural solutions that are safe, efficient, and built to last. We work across all construction types — residential, commercial, industrial, and mixed-use — throughout New York, New Jersey, Connecticut, and Pennsylvania.'
   about_cta_text = 'About Our Firm'
   about_cta_link = '/about/'
 

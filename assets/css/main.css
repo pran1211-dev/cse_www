@@ -273,7 +273,8 @@ ul, ol { margin: 0; padding: 0; }
   text-decoration: none;
 }
 
-.site-logo__accent { color: var(--color-teal); }
+.site-logo__accent { color: var(--color-teal); font-size: 1.5em; }
+.site-logo__period { color: #000; font-size: 1.5em; }
 
 /* Homepage: white logo over hero */
 .home .site-header:not(.is-scrolled) .site-logo {
@@ -1432,7 +1433,7 @@ ul, ol { margin: 0; padding: 0; }
   margin-bottom: var(--space-4);
 }
 
-.footer-brand__accent { color: var(--color-teal); }
+.footer-brand__accent { color: var(--color-teal); font-size: 1.5em; }
 
 .footer-tagline {
   font-size: var(--text-sm);

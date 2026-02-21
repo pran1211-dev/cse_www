@@ -55,6 +55,10 @@ description = "CityScape Engineering is a structural engineering firm serving Ne
   [[params.areas]]
     name = "Connecticut"
     detail = "Fairfield County and the greater Hartford area."
+
+  [[params.areas]]
+    name = "Pennsylvania"
+    detail = "Philadelphia and the greater Delaware Valley region."
 +++
 
 ## Our Approach
