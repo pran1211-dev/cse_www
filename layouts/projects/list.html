@@ -8,7 +8,11 @@
 {{- define "main" -}}
 
 <div class="project-list-hero">
-  <div class="container">
+  <video class="project-list-hero__video" autoplay muted loop playsinline aria-hidden="true">
+    <source src="/videos/projects-hero.mp4" type="video/mp4">
+  </video>
+  <div class="project-list-hero__overlay" aria-hidden="true"></div>
+  <div class="container project-list-hero__content">
     <h1 class="project-list-hero__title reveal">{{ .Title }}</h1>
     {{- with .Description -}}
       <p class="project-list-hero__description reveal reveal--d1">{{ . }}</p>
