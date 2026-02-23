@@ -3,7 +3,7 @@
 # These render inside a 24x24 viewBox with stroke="currentColor".
 
 - label: Support of Excavation
-  icon_path: '<path d="M2 22h20"/><path d="M6 22V8l6-6 6 6v14"/><path d="M9 22v-6h6v6"/>'
+  icon_path: '<rect x="1" y="18" width="14" height="5" rx="2.5"/><circle cx="4" cy="20.5" r="0.8"/><circle cx="8" cy="20.5" r="0.8"/><circle cx="12" cy="20.5" r="0.8"/><path d="M2 18V13h12v5"/><path d="M3 13V9h7v4"/><path d="M10 9L18 3"/><circle cx="18" cy="3" r="0.8"/><path d="M18 3L22 10"/><path d="M22 10L21 15Q18 16 17 14L19 10"/>'
 
 - label: Demolition
   icon_path: '<path d="M3 12h18"/><path d="M3 6h18"/><path d="M9 18l3 3 3-3"/><path d="M12 21V12"/>'

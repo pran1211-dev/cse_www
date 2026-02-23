@@ -38,7 +38,7 @@
       {{- end -}}
     </div>
     <div class="news-cta reveal">
-      <a href="/posts/" class="btn btn--outline">All Updates</a>
+      <a href="{{ with site.GetPage "/posts" }}{{ .RelPermalink }}{{ else }}/posts/{{ end }}" class="btn btn--outline">All Updates</a>
     </div>
   </div>
 </section>
